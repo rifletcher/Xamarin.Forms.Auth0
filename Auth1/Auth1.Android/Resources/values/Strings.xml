@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="hello">Hello World, Click Me!</string>
+	<string name="app_name">Auth1.Droid</string>
+  <string name="auth0_domain">channelyou.eu.auth0.com</string>
+  <string name="auth0_client_id">mXz8kEuaIIWmEMXumX7BJnnsHkrokYw6</string>
+</resources>
