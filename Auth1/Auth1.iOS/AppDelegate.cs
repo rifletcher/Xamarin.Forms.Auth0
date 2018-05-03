@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using Auth0.OidcClient;
 using Foundation;
 using UIKit;
 
@@ -20,12 +20,34 @@ namespace Auth1.iOS
         //
         // You have 17 seconds to return from this method, or iOS will terminate your application.
         //
+
+        public override UIWindow Window
+        {
+            get;
+            set;
+        }
+
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
-            LoadApplication(new App());
+            MyViewController myViewController = new MyViewController();
 
+            LoadApplication(new App());
+            Window = new UIWindow(UIScreen.MainScreen.Bounds);
+
+            // If you have defined a root view controller, set it here:
+            Window.RootViewController = myViewController;
+
+            // make the window visible
+            Window.MakeKeyAndVisible();
             return base.FinishedLaunching(app, options);
+        }
+
+        public override bool OpenUrl(UIApplication application, NSUrl url, string sourceApplication, NSObject annotation)
+        {
+            ActivityMediator.Instance.Send(url.AbsoluteString);
+
+            return true;
         }
     }
 }
