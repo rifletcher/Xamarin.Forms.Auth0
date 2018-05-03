@@ -17,9 +17,9 @@ namespace Auth1.Droid
     [IntentFilter(
         new[] { Intent.ActionView },
         Categories = new[] { Intent.CategoryDefault, Intent.CategoryBrowsable },
-        DataScheme = "com.companyname.Auth1",
+        DataScheme = "com.companyname.auth1",
         DataHost = "@string/auth0_domain",
-        DataPathPrefix = "/android/com.companyname.Auth1/callback")]
+        DataPathPrefix = "/android/com.companyname.auth1/callback")]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle bundle)
@@ -40,7 +40,7 @@ namespace Auth1.Droid
         {
             base.OnNewIntent(intent);
             var androidLogin = (AndroidLogin)DependencyService.Get<ILogin>();
-            androidLogin.Context = this;
+            //androidLogin.Context = this;
 
             var loginResult = await androidLogin.client.ProcessResponseAsync(intent.DataString, androidLogin.authorizeState);
 
